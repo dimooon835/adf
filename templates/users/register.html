@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="w-6/12 border rounded-lg bg-white p-4 mx-auto border-zinc-300">
+        <h1 class="font-bold text-2x1">Регистрация</h1>
+        <p class="text-sm text-zinc-500 font-medium">
+            Войдите, чтобы создавать посты, комментировать
+            и сохранять в избранное.
+        </p>
+    
+
+        <form class="mt-4 flex flex-col gap-4">
+            <div>
+                <label for="username" class="block text-sm text-zinc-500">
+                    Имя пользователя
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Имя пользователя"
+                    class="w-full
+                        px-4 py-2 border border-zinc-300 text-base rounded-lg"
+                />
+            </div>
+
+
+            <div>
+                <label for="password" class="block text-sm text-zinc-500">
+                    Пароль
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Пароль"
+                    class="w-full
+                        px-4 py-2 border border-zinc-300 text-base rounded-lg"
+                />
+            </div>
+
+
+            <div>
+                <label for="password2" class="block text-sm text-zinc-500">
+                    Повторите пароль
+                </label>
+
+                <input
+                    type="password2"
+                    id="password2"
+                    name="password2"
+                    placeholder="Повторите пароль"
+                    class="w-full
+                        px-4 py-2 border border-zinc-300 text-base rounded-lg"
+                />
+            </div>
+
+
+            <div>
+                <label for="username" class="block text-sm text-zinc-500">
+                    Email
+                </label>
+
+                <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    class="w-full
+                        px-4 py-2 border border-zinc-300 text-base rounded-lg"
+                />
+            </div>
+
+
+            <button
+                type="submit"
+                class="flex items-center justify-center h-11 px-6 bg-black text-white text-base font-medium rounded-lg"
+            >Создать аккаунт</button>
+
+            <p class="mt-5 text-sm text-slate-600 text-center">
+                Уже есть аккаунт?
+                <a
+                    href=""
+                    class="text-blue-600">
+                    Войти
+                </a>
+            </p>
+        </form>
+    </div>
+{% endblock %}
