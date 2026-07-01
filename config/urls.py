@@ -28,5 +28,5 @@ urlpatterns = [
     path('favorite_list/', views.favorite_list),
 
     path('accounts/', include("users.urls")),
-    path('posts', include("posts/.urls")),
+    path('posts', include("posts.urls")),
 ]
