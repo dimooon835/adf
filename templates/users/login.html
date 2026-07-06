@@ -9,7 +9,10 @@
         </p>
         
 
-        <form class="mt-4 flex flex-col gap-4">
+        <form method="post" class="mt-4 flex flex-col gap-4">
+            {% csrf_token %}
+            {{ non_field_errors }}
+
             <div>
                 <label for="username" class="block text-sm text-zinc-500">
                     Имя пользователя
@@ -19,10 +22,13 @@
                     type="text"
                     id="username"
                     name="username"
+                    value="{{ username_value }}"
                     placeholder="Имя пользователя"
                     class="w-full
                         px-4 py-2 border border-zinc-300 text-base rounded-lg"
                 />
+
+                {{ errors.username }}
             </div>
 
 
@@ -39,6 +45,8 @@
                     class="w-full
                         px-4 py-2 border border-zinc-300 text-base rounded-lg"
                 />
+
+                {{ errors.password }}
             </div>
 
 
@@ -51,7 +59,7 @@
             <p class="mt-5 text-sm text-slate-600 text-center">
                 Нет аккаунта?
                 <a
-                    href=""
+                    href="{% url 'register' %}"
                     class="text-blue-600">
                     Зарегистрироваться
                 </a>
