@@ -12,9 +12,17 @@
             <div class="w-5 h-5 bg-black"></div>
 
             <div class = 'flex items-center gap-2'>
-                <a href="">Посты</a>
-                <a href="">Избранное</a>
-                <a href="">Войти</a>
+
+                {% if user.is_authenticated %}
+                    <a href="">Посты</a>
+                    <a href="">Избранное</a>
+                    <form action="{% url 'logout' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">Выйти</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'logout' %}">Войти</a>
+                {% endif %}
 
             </div>
         </div>
