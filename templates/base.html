@@ -17,6 +17,7 @@
                     <a href="">Посты</a>
                     <a href="">Избранное</a>
                     <form action="{% url 'logout' %}" method="POST">
+                        {% csrf_token %}
                         <button type="submit">Выйти</button>
                     </form>
                 {% else %}
