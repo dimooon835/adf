@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="text-2x1 font-bold">Новый пост</h1>
+<h1 class="text-2x1 font-bold">{% if object %}Редактировать пост{% else %}Новый пост{% endif %}</h1>
 
-<form class="flex flex-col gap-4">
+<form class="flex flex-col gap-4" method="POST">
+    {% csrf_token %}
+
     <div>
         <label for="title" class="block text-sm text-zinc-500">
             Заголовок
@@ -13,9 +15,14 @@
             type="text"
             id="title"
             name="title"
+            value="{{ title_value }}"
             placeholder="Заголовок"
             class="w-full px-4 py-2 border border-zinc-300 text-base rounded-lg"
         />
+
+        {% if errors.title %}
+            <p class="text-red-500 text-sm mt-1">{{ errors.title }}</p>
+        {% endif %}
     </div>
 
 
@@ -29,12 +36,16 @@
             name="text"
             placeholder="Текст поста"
             class="w-full px-4 py-2 border border-zinc-300 text-base rounded-lg min-h-20"
-        />
+        >{{ text_value }}</textarea>
+
+        {% if errors.text %}
+            <p class="text-red-500 text-sm mt-1">{{ errors.text }}</p>
+        {% endif %}
     </div>
 
     <button
         type="submit"
         class="flex items-center justify-center h-11 px-6 bg-black text-white text-base font-medium rounded-lg"
-    >Создать</button>
+    >{% if object %}Сохранить{% else %}Создать{% endif %}</button>
 </form>
 {% endblock %}
