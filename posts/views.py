@@ -42,7 +42,7 @@ class PostDetailView(DetailView):
     model = Post
     template_name = "posts/post_detail.html"
 
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             return redirect("login")
         
@@ -50,7 +50,7 @@ class PostDetailView(DetailView):
         comment_text = request.POST.get("text", "").strip()
 
         if comment_text:
-            Comment.object.create(
+            Comment.objects.create(
                 post = self.object,
                 author = request.user,
                 text = comment_text
@@ -130,8 +130,8 @@ class ToggleFavoriteView(LoginRequiredMixin, View):
     def post(self, request, pk):
         post = get_object_or_404(Post, pk = pk)
 
-        if post.favorite.filter(pk = request.user.pk).exists():
-            post.favorite.remove(request.user)
+        if post.favorites.filter(pk = request.user.pk).exists():
+            post.favorites.remove(request.user)
         else:
             post.favorites.add(request.user)
 
